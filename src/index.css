@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body { @apply bg-surface font-sans text-ink antialiased; -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
+  button { @apply cursor-pointer; }
+  input, select, textarea, button { font: inherit; color: inherit; }
+}
+
+@layer components {
+  .card { @apply rounded-[20px] bg-white shadow-card; }
+  .btn { @apply inline-flex h-14 items-center justify-center gap-2 rounded-2xl px-4 text-[19px] font-bold text-white disabled:opacity-50; }
+  .btn-s { @apply inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-4 text-base font-bold text-white disabled:opacity-50; }
+  .btn-ghost { @apply inline-flex h-12 items-center justify-center gap-2 rounded-2xl border-2 border-primary bg-white px-4 text-base font-bold text-primary-ink disabled:opacity-50; }
+  .chip { @apply h-11 shrink-0 whitespace-nowrap rounded-full border-[1.5px] border-line bg-white px-4 text-sm font-semibold; }
+  .chip-on { @apply border-primary bg-primary-soft font-bold text-primary-ink; }
+  .input { @apply h-14 w-full rounded-2xl border border-line bg-white px-4 text-base font-semibold outline-none focus:border-primary focus:ring-2 focus:ring-primary/30; }
+  .lbl { @apply text-[13px] font-semibold text-mute-ink; }
+  .ib { @apply inline-flex h-11 w-11 items-center justify-center rounded-2xl; }
+  .nav-h { height: calc(68px + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom); }
+  .above-nav { bottom: calc(68px + env(safe-area-inset-bottom)); }
+  .safe-t { padding-top: env(safe-area-inset-top); }
+  .safe-b { padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+@keyframes page-in { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+@keyframes sheet-in { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes toast-in { from { transform: translateY(-8px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.page-in { animation: page-in 0.18s ease-out; }
+.sheet-in { animation: sheet-in 0.2s ease-out; }
+.toast-in { animation: toast-in 0.18s ease-out; }
+.spin { animation: spin 1s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .page-in, .sheet-in, .toast-in, .spin { animation: none; } }
+@media print { .no-print { display: none !important; } body { background: #fff; } }
